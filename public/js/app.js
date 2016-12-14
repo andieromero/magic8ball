@@ -1,116 +1,76 @@
-angular.module("contactsApp", ['ngRoute'])
+angular.module("magicApp", ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "list.html",
-                controller: "ListController",
+                templateUrl: "index.html",
+                controller: "magicController",
+            })
+            .when("/feed", {
+                templateUrl: "feed.html",
+                controller: "feedController",
                 resolve: {
-                    contacts: function(Contacts) {
-                        return Contacts.getContacts();
+                    q_and_a: function(Q_and_A) {
+                        return Q_and_A.getQAs();
                     }
                 }
             })
-            .when("/new/contact", {
-                controller: "NewContactController",
-                templateUrl: "contact-form.html"
-            })
-            .when("/contact/:contactId", {
-                controller: "EditContactController",
-                templateUrl: "contact.html"
-            })
+            // .when("/contact/:contactId", {
+            //     controller: "EditContactController",
+            //     templateUrl: "contact.html"
+            // })
             .otherwise({
                 redirectTo: "/"
             })
     })
-    .service("Contacts", function($http) {
-        this.getContacts = function() {
-            return $http.get("/contacts").
+    .service("Q_and_A", function($http) {
+        this.getQAs = function() {
+            return $http.get("/qas").
                 then(function(response) {
                     return response;
                 }, function(response) {
-                    alert("Error finding contacts.");
+                    alert("Error finding questions and answers.");
                 });
         }
-        this.createContact = function(contact) {
-            return $http.post("/contacts", contact).
+        this.saveQA = function(qa) {
+            return $http.post("/qas", qa).
                 then(function(response) {
+                    console.log("saving qa");
+                    console.log(qa);
                     return response;
                 }, function(response) {
-                    alert("Error creating contact.");
+                    alert("Error saving question and answer.");
                 });
         }
-        this.getContact = function(contactId) {
-            var url = "/contacts/" + contactId;
+        this.getQA = function(qaId) {
+            var url = "/qas/" + qaId;
             return $http.get(url).
                 then(function(response) {
                     return response;
                 }, function(response) {
-                    alert("Error finding this contact.");
+                    alert("Error finding question and answer.");
                 });
         }
-        this.editContact = function(contact) {
-            var url = "/contacts/" + contact._id;
-            console.log(contact._id);
-            return $http.put(url, contact).
-                then(function(response) {
-                    return response;
-                }, function(response) {
-                    alert("Error editing this contact.");
-                    console.log(response);
-                });
-        }
-        this.deleteContact = function(contactId) {
-            var url = "/contacts/" + contactId;
+        this.deleteQA = function(qaId) {
+            var url = "/qas/" + qaId;
             return $http.delete(url).
                 then(function(response) {
                     return response;
                 }, function(response) {
-                    alert("Error deleting this contact.");
+                    alert("Error deleting this question and answer.");
                     console.log(response);
                 });
         }
     })
-    .controller("ListController", function(contacts, $scope) {
-        $scope.contacts = contacts.data;
+    .controller("feedController", function(q_and_a, $scope) {
+        $scope.qas = q_and_a.data;
     })
-    .controller("NewContactController", function($scope, $location, Contacts) {
-        $scope.back = function() {
-            $location.path("#/");
-        }
+    .controller("magicController", function($scope, $location, Q_and_A) {
 
-        $scope.saveContact = function(contact) {
-            Contacts.createContact(contact).then(function(doc) {
-                var contactUrl = "/contact/" + doc.data._id;
-                $location.path(contactUrl);
+        $scope.saveQA = function(qa) {
+            Q_and_A.saveQA(qa).then(function(doc) {
+                $location.path("/feed");
             }, function(response) {
                 alert(response);
             });
-        }
-    })
-    .controller("EditContactController", function($scope, $routeParams, Contacts) {
-        Contacts.getContact($routeParams.contactId).then(function(doc) {
-            $scope.contact = doc.data;
-        }, function(response) {
-            alert(response);
-        });
-
-        $scope.toggleEdit = function() {
-            $scope.editMode = true;
-            $scope.contactFormUrl = "contact-form.html";
-        }
-
-        $scope.back = function() {
-            $scope.editMode = false;
-            $scope.contactFormUrl = "";
-        }
-
-        $scope.saveContact = function(contact) {
-            Contacts.editContact(contact);
-            $scope.editMode = false;
-            $scope.contactFormUrl = "";
-        }
-
-        $scope.deleteContact = function(contactId) {
-            Contacts.deleteContact(contactId);
         }
     });

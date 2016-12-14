@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
 
-var Q_AND_A = "questions";
+var Q_AND_A_COLLECTION = "q_and_a";
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
