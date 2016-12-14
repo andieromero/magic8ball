@@ -1,0 +1,15 @@
+{
+  "name": "askmagic8",
+  "version": "1.0.0",
+  "description": "This is a web app that prompts the user to ask magic 8 ball a question. The magic 8 ball will give a randomized answer. This app is built using the MEAN stack so that it can save user responses.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "magic8ball"
+  ],
+  "author": "Andriana Romero",
+  "license": "ISC"
+}
