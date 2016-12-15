@@ -1,0 +1,15 @@
+<h2>
+  Magic 8 Ball Q and A
+</h2>
+<div class="container">
+  <table class="table table-hover">
+    <tbody>
+      <tr ng-repeat="qa in qas" style="cursor:pointer">
+        <td>{{qa.date}}</td>
+        <td>{{qa.question}}</td>
+        <td>{{qa.answer}}</td>
+        <td><button class="btn btn-default" ng-click="deleteQA(qa._id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

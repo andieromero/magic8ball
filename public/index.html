@@ -12,6 +12,8 @@
     <!-- Angular lib -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script> -->
+    <!-- <script src="http://momentjs.com/downloads/moment.js"></script> -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -19,11 +21,7 @@
   </head>
 
   <body>
-    <h1> MAGIC 8 BALL </h1>
-    <input id="prompt" class="form-control" type="text" placeholder="Ask me about your future..." ng-model="qa.question">
-    <button type="submit" class="btn btn-primary" ng-click="saveQA(qa.question)">Ask</button>
-    <a href="#/feed"><small class="form-text text-muted">See what other's have asked!</small></a>
-    <p id="answer" ng-model="qa.answer">{{qa.answer}}</p>
+
     <!-- Dynamically render templates -->
     <div class="container" ng-view>
     </div>

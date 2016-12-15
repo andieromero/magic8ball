@@ -11,5 +11,9 @@
     "magic8ball"
   ],
   "author": "Andriana Romero",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular-moment": "^1.0.1",
+    "moment": "^2.17.1"
+  }
 }
