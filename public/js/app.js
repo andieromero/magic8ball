@@ -80,7 +80,18 @@ angular.module("magicApp", ['ngRoute'])
         }
     })
     .controller("magicController", function($scope, $location, Q_and_A) {
+        var shake = function(){
+            el = $('.ball');
+            el.removeClass('shake');
+            el.removeClass('animated');
+            el.addClass('shake');
+            el.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+            function (e) {
+                el.removeClass('shake');
+            });
+        };
         $scope.magicResponse = function(qa){
+          shake();
           if(qa == undefined) {
             alert("Please ask Magic 8 Ball a question!");
             return;
@@ -114,7 +125,6 @@ angular.module("magicApp", ['ngRoute'])
           var random = Math.floor(Math.random() * responses.length);
           qa.answer = responses[random];
           qa.image = images[random];
-
           $scope.questionAsked = true;
         }
         $scope.saveQA = function(qa) {

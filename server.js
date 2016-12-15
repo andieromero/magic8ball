@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // global db object
 var db;
 //process.env.MONGODB_URI
-// TO RUN LOCALLY USE: mongodb://127.0.0.1/test
+// TO RUN LOCALLY USE:
 // connect to database
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database){
     if(err){

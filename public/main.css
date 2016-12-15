@@ -9,6 +9,7 @@ body, html {
   background-image: url(/img/bg.png);
   height: 100%;
   padding-top: 0px;
+  overflow: auto;
 }
 
 
@@ -66,6 +67,49 @@ small {
   display: block;
   margin-top: 30px;
   margin-bottom: 30px;
+  cursor: pointer;
+}
+.ball.shake {
+    -webkit-animation: shake .7s 1;
+    -moz-animation: shake .7s 1;
+    -o-animation: shake .7s 1;
+    animation: shake .7s 1;
+}
+.bubble {
+    position: relative;
+    background: #FFFFCC;
+    border: 1px solid #FFCC00;
+    max-width:250px;
+    padding:10px;
+    font-family:arial;
+    margin:0 auto;
+    font-size:14px;
+    border-radius:6px;
+
+}
+.bubble:after,
+.bubble:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.bubble:after {
+    border-color: rgba(255, 255, 204, 0);
+    border-right-color: #FFFFCC;
+    border-width: 15px;
+    margin-top: -15px;
+}
+.bubble:before {
+    border-color: rgba(255, 204, 0, 0);
+    border-right-color: #FFCC00;
+    border-width: 16px;
+    margin-top: -16px;
 }
 .modal-dialog {
   color: black;
@@ -82,6 +126,11 @@ small {
 table {
   text-align: left;
 }
+.table-wrapper {
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
 thead {
   font-weight: bold;
 }
@@ -97,4 +146,10 @@ tbody {
   left: -40px;
   top: -40px;
   cursor: pointer;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  #play-again {
+    width: 100px;
+  }
 }

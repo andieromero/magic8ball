@@ -11,7 +11,8 @@
       <a href="#/feed" class="feed-link"><small class="form-text">See what other's have asked!</small></a>
     </div>
     <!-- <p id="answer" ng-model="qa.answer">{{qa.answer}}</p> -->
-    <img src="img/blank.png" ng-src="img/{{qa.image}}" alt="answer" class="ball">
+    <img src="img/blank.png" ng-src="img/{{qa.image}}" alt="answer" class="ball" id="shake" ng-click="magicResponse(qa)">
+    <div class="bubble-wrap"><div class="bubble">Don't like Magic 8 Ball's response? Click to shake again!</div></div>
     <div class="btn-group animated fadeIn" role="group" aria-label="..." ng-if="questionAsked">
       <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Don't approve? Shake again!" ng-click="magicResponse(qa)">Shake</button>
       <button type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal" >Post</button>
@@ -45,6 +46,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" ng-click="saveQA(qa)" >Post</button>
+
           </div>
         </div>
       </div>
