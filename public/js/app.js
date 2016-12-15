@@ -46,8 +46,8 @@ angular.module("magicApp", ['ngRoute'])
                 });
         }
         this.updateTime = function(qa){
-            var url ="/qas/" + qaId;
-            return $http.put(url, contact).
+            var url ="/qas/" + qa._id;
+            return $http.put(url, qa).
                 then(function(response){
                     return response;
                 }, function(response){
@@ -66,9 +66,12 @@ angular.module("magicApp", ['ngRoute'])
     })
     .controller("feedController", function(q_and_a, $scope, Q_and_A, $route) {
         $scope.qas = q_and_a.data;
-        q_and_a.data.forEach(function(qa){
-            console.log(qa.date);
+        q_and_a.data.forEach(function(qa, idx, array){
+            qa.date = ((new Date()).getTime() - (qa.date)) / 1000;
+            Q_and_A.updateTime(qa);
+            if (idx === array.length - 1) array[idx].date = "just now";
         });
+        // $route.reload();
         // console.log(q_and_a.data);
         // Q_and_A.updateTime(q_and_a);
         $scope.deleteQA = function(qaID){
@@ -78,6 +81,14 @@ angular.module("magicApp", ['ngRoute'])
     })
     .controller("magicController", function($scope, $location, Q_and_A) {
         $scope.magicResponse = function(qa){
+          if(qa == undefined) {
+            alert("Please ask Magic 8 Ball a question!");
+            return;
+          }
+          var images = ["1.png", "2.png", "3.png", "4.png", "5.png"
+        , "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png"
+        , "13.png", "14.png", "15.png", "16.png", "17.png", "18.png"
+        , "19.png", "20.png"];
           var responses = [
           "It is certain",
           "It is decidedly so",
@@ -100,15 +111,21 @@ angular.module("magicApp", ['ngRoute'])
           "Outlook not so good",
           "Very doubtful"
           ];
-          var randResponse = responses[Math.floor(Math.random() * responses.length)];
-          qa.answer = randResponse;
-          // qa.date = moment().format('MMM DO YY, h:mm:ss a');
+          var random = Math.floor(Math.random() * responses.length);
+          qa.answer = responses[random];
+          qa.image = images[random];
+
+          $scope.questionAsked = true;
         }
         $scope.saveQA = function(qa) {
+            if($(".form-check-input")[0].checked) {
+              qa.player = "Anonymous";
+            }
             Q_and_A.postQA(qa).then(function(doc) {
                 $location.path("/feed");
             }, function(response) {
                 alert(response);
             });
+            $(".modal-backdrop").hide();
         }
     });

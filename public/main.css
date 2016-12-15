@@ -1,0 +1,100 @@
+body, html {
+  height: 100%;
+}
+.view {
+  color: white;
+  text-align: center;
+  padding: 75px 0;
+  background-color: #5337b6;
+  background-image: url(/img/bg.png);
+  height: 100%;
+  padding-top: 0px;
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .header {
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 30px;
+    width: 970px;
+  }
+}
+@media (min-width: 1024px){
+  .header {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 40px;
+    width: 970px;
+  }
+}
+
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 86px;
+}
+@media (max-width: 425px){
+  h1 {
+    font-size: 42px;
+  }
+}
+h1 span {
+  color: #000000;
+}
+.input-group {
+  position: relative;
+  margin: 0 auto;
+}
+.feed-link{
+  display: block;
+  text-align: right;
+}
+small {
+  display: inline-block;
+  color: #1a1b1b;
+  text-decoration: underline;
+}
+.ball {
+  width: 50vh;
+  position: relative;
+  margin: 0 auto;
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.modal-dialog {
+  color: black;
+  text-align: left;
+}
+.feed {
+  background-color: rgba(156, 146, 192, 0.48);
+  position: relative;
+  top: 40px;
+}
+.red {
+  color: #ae0707;
+}
+table {
+  text-align: left;
+}
+thead {
+  font-weight: bold;
+}
+tbody {
+  color: #cdc2fa;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #4e36a4;
+}
+#play-again {
+  width: 150px;
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  cursor: pointer;
+}

@@ -1,15 +1,26 @@
-<h2>
-  Magic 8 Ball Q and A
-</h2>
-<div class="container">
-  <table class="table table-hover">
-    <tbody>
-      <tr ng-repeat="qa in qas" style="cursor:pointer">
-        <td>{{qa.date}}</td>
-        <td>{{qa.question}}</td>
-        <td>{{qa.answer}}</td>
-        <td><button class="btn btn-default" ng-click="deleteQA(qa._id)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+<a href="#/"><img src="img/play.png" id="play-again" ></a>
+<div class="container feed">
+  <h1>
+    Magic <span>8</span> Ball
+  </h1>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <td>Date</td>
+        <td>Player</td>
+        <td>Question</td>
+        <td>Answer</td>
+        <td></td>
+      </thead>
+      <tbody>
+        <tr ng-repeat="qa in qas" >
+          <td>{{qa.date}}</td>
+          <td>{{qa.player}}</td>
+          <td>{{qa.question}}</td>
+          <td>{{qa.answer}}</td>
+          <td ng-click="deleteQA(qa._id)"><span class="glyphicon glyphicon-remove red" style="cursor:pointer" aria-hidden="true"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

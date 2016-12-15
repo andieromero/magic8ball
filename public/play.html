@@ -1,6 +1,53 @@
-<h1> MAGIC 8 BALL </h1>
-<input id="prompt" class="form-control" type="text" placeholder="Ask me about your future..." ng-model="qa.question">
-<button type="submit" class="btn btn-primary" ng-click="magicResponse(qa)">Ask</button>
-<a href="#/feed"><small class="form-text text-muted">See what other's have asked!</small></a>
-<p id="answer" ng-model="qa.answer">{{qa.answer}}</p>
-<button type="submit" class="btn btn-primary" ng-click="saveQA(qa)">Accept</button>
+<div class="main">
+  <div class="container">
+    <div class="container header animated bounce">
+      <h1> MAGIC <span>8</span> BALL </h1>
+      <div class="input-group has-feedback">
+        <input class="form-control" type="text" placeholder="Ask me about your future..." ng-model="qa.question">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="magicResponse(qa)" class="shake">Ask</button>
+        </span>
+      </div>
+      <a href="#/feed" class="feed-link"><small class="form-text">See what other's have asked!</small></a>
+    </div>
+    <!-- <p id="answer" ng-model="qa.answer">{{qa.answer}}</p> -->
+    <img src="img/blank.png" ng-src="img/{{qa.image}}" alt="answer" class="ball">
+    <div class="btn-group animated fadeIn" role="group" aria-label="..." ng-if="questionAsked">
+      <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Don't approve? Shake again!" ng-click="magicResponse(qa)">Shake</button>
+      <button type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal" >Post</button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Share your question and answer!</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="formGroupExampleInput">Post as...</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="your name" ng-model="qa.player">
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" >
+                  Anonymous
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="saveQA(qa)" >Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

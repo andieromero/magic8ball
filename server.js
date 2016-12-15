@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 // global db object
 var db;
 //process.env.MONGODB_URI
+// TO RUN LOCALLY USE: mongodb://127.0.0.1/test
 // connect to database
-mongodb.MongoClient.connect("mongodb://127.0.0.1/test", function(err, database){
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database){
     if(err){
       console.log(err);
       process.exit(1);
@@ -60,8 +61,9 @@ function handleError(res, reason, message, code) {
 
  app.post("/qas", function(req, res) {
    var newQA = req.body;
-   var momentCreated = moment();
-   newQA.date = moment(momentCreated).fromNow();
+  //  var momentCreated = moment();
+  //  newQA.date = moment(momentCreated).fromNow();
+  newQA.date = (new Date()).getTime();
    if (!(req.body.question)) {
      handleError(res, "Invalid user input", "Must provide a question.", 400);
    }
