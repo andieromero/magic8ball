@@ -18,7 +18,7 @@ var db;
 //process.env.MONGODB_URI
 // TO RUN LOCALLY USE: mongodb://127.0.0.1/test
 // connect to database
-mongodb.MongoClient.connect("mongodb://127.0.0.1/test", function(err, database){
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database){
     if(err){
       console.log(err);
       process.exit(1);
