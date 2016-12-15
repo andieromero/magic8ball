@@ -67,19 +67,19 @@ angular.module("magicApp", ['ngRoute'])
     .controller("feedController", function(q_and_a, $scope, Q_and_A, $route) {
         $scope.qas = q_and_a.data;
         q_and_a.data.forEach(function(qa, idx, array){
-            // var today = new Date();
-            // var todayDate=[today.getMonth(), today.getDay(), today.getHours(), today.getMinutes()];
-            // // [0] month, [1] day, [2] hour, [3] minutes
-            // var diffDates = [(todayDate[0] - qa.date[0]), (todayDate[1] - qa.date[1]), (todayDate[2] - qa.date[2]), (todayDate[3] - qa.date[3])];
-            // qa.dateDiff = diffDates;
-            // if (diffDates[0] == diffDates[1] == diffDates[2] == 0){
-            //   if(diffDates[3] < 5) qa.dateDiff = "a few minutes ago";
-            //   if(diffDates[3] <= 1) qa.dateDiff = "just now" ;
-            // }
-            // else if(diffDates[0] == diffDates[1] == 0) qa.dateDiff = diffDates[2] + " hour(s) ago";
-            // else if(diffDates[0] == 0) qa.dateDiff = diffDates[1] + " days(s) ago";
-            // else qa.dateDiff = diffDates[0] + " months(s) ago";
-            qa.dateDiff = "testing";
+            var today = new Date();
+            var todayDate=[today.getMonth(), today.getDay(), today.getHours(), today.getMinutes()];
+            // [0] month, [1] day, [2] hour, [3] minutes
+            var diffDates = [(todayDate[0] - qa.date[0]), (todayDate[1] - qa.date[1]), (todayDate[2] - qa.date[2]), (todayDate[3] - qa.date[3])];
+            qa.dateDiff = diffDates;
+            if (diffDates[0] == diffDates[1] == diffDates[2] == 0){
+              if(diffDates[3] < 5) qa.dateDiff = "a few minutes ago";
+              if(diffDates[3] <= 1) qa.dateDiff = "just now" ;
+            }
+            else if(diffDates[0] == diffDates[1] == 0) qa.dateDiff = diffDates[2] + " hour(s) ago";
+            else if(diffDates[0] == 0) qa.dateDiff = diffDates[1] + " days(s) ago";
+            else qa.dateDiff = diffDates[0] + " months(s) ago";
+
             Q_and_A.updateTime(qa);
         });
 
