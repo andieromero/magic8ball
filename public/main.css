@@ -46,6 +46,31 @@ h1 span {
   position: relative;
   margin: 0 auto;
 }
+.input-group input, .input-group input:active {
+  background-color: rgba(51, 37, 102, 0.53);
+    border-color: #412d87;
+    box-shadow: inset 0 0 10px #34246a;
+    border-radius: 0px;
+    color: #ffffff;
+}
+.input-group input:focus {
+  border-color: #958abc;
+  color: #ffffff;
+}
+.input-group-btn button, .input-group-btn button:active, .input-group-btn button:visited, .input-group-btn button:focus{
+  background-color: #332566;
+  border-color: #332566;
+  color: #a89dd0;
+  border-radius: 0px;
+}
+
+.input-group-btn button:hover{
+  cursor: pointer;
+  background-color: #332566;
+  border-color: #332566;
+  color: #a89dd0;
+  border-radius: 0px;
+}
 .feed-link{
   display: block;
   text-align: right;
@@ -114,6 +139,31 @@ small {
 .modal-dialog {
   color: black;
   text-align: left;
+}
+#share{
+  background-color: #cdd422;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Droid Sans', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px 15px;
+  border: none;
+  position: relative;
+  display: block;
+  margin-top: 15px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 3px;
+  box-shadow: inset 0 -4px 1px -1px #9c9c02;
+  position: relative;
+  right: 13px;
+}
+#share:hover {
+  background-color: #9c9c02;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  box-shadow: none;
 }
 .feed {
   background-color: rgba(156, 146, 192, 0.48);
