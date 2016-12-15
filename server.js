@@ -4,8 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
-var moment = require('moment');
-// require('angular-moment');
+
 
 var Q_AND_A_COLLECTION = "q_and_a";
 
@@ -15,7 +14,9 @@ app.use(bodyParser.json());
 
 // global db object
 var db;
-//process.env.MONGODB_URI
+
+
+// TO RUN ON WEB: process.env.MONGODB_URI
 // TO RUN LOCALLY USE: mongodb://127.0.0.1/test
 // connect to database
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database){
@@ -78,7 +79,9 @@ function handleError(res, reason, message, code) {
 
  /*
   *   Route: "/qas/:id"
-  *
+  *   GET: finds a single qa (question/answer) object
+  *   PUT: updates a single qa object
+  *   DELETE: deletes a single qa object
   */
   app.get("/qas/:id", function(req, res) {
     db.collection(Q_AND_A_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
