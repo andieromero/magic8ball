@@ -76,7 +76,7 @@ angular.module("magicApp", ['ngRoute'])
               if(diffDates[3] < 5) qa.dateDiff = "a few minutes ago";
               if(diffDates[3] <= 1) qa.dateDiff = "just now" ;
             }
-            else if(diffDates[0] == 0) && (diffDates[1] == 0) qa.dateDiff = diffDates[2] + " hour(s) ago";
+            else if((diffDates[0] == 0) && (diffDates[1] == 0)) qa.dateDiff = diffDates[2] + " hour(s) ago";
             else if(diffDates[0] == 0) qa.dateDiff = diffDates[1] + " days(s) ago";
             else qa.dateDiff = diffDates[0] + " months(s) ago";
 
