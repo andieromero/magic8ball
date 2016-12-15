@@ -86,9 +86,9 @@ angular.module("magicApp", ['ngRoute'])
         // iterate through each object to update date displayed
         q_and_a.data.forEach(function(qa, idx, array){
             var today = new Date();
-            var todayDate=[today.getMonth(), today.getDay(), today.getHours(), today.getMinutes()];
-            console.log(todayDate);
-            console.log(qa.date);
+            var todayDate=[today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()];
+            // console.log(todayDate);
+            // console.log(qa.date);
             // [0] month, [1] day, [2] hour, [3] minutes
             var diffDates = [(todayDate[0] - qa.date[0]), (todayDate[1] - qa.date[1]), (todayDate[2] - qa.date[2]), (todayDate[3] - qa.date[3])];
             qa.dateDiff = diffDates;

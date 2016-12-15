@@ -63,7 +63,7 @@ function handleError(res, reason, message, code) {
  app.post("/qas", function(req, res) {
    var newQA = req.body;
   var date = new Date();
-  newQA.date = [date.getMonth(), date.getDay(), date.getHours(), date.getMinutes()];
+  newQA.date = [date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()];
    if (!(req.body.question)) {
      handleError(res, "Invalid user input", "Must provide a question.", 400);
    }
