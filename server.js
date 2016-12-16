@@ -65,7 +65,7 @@ function handleError(res, reason, message, code) {
   var date = new Date();
   console.log("server get date");
   console.log(date.getDate());
-  newQA.date = [date.getMonth(), date.getUTCDate(), date.getHours(), date.getMinutes()];
+  newQA.date = [date.getMonth(), date.getUTCDate(), date.getUTCHours(), date.getMinutes()];
   console.log("server full date");
   console.log(newQA.date);
    if (!(req.body.question)) {
