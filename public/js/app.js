@@ -87,6 +87,8 @@ angular.module("magicApp", ['ngRoute'])
         q_and_a.data.forEach(function(qa, idx, array){
             var today = new Date();
             var todayDate=[today.getMonth(), today.getDate(), today.getHours(), today.getMinutes()];
+            console.log("controller qa date");
+            console.log(qa.date);
             // console.log(todayDate);
             // console.log(qa.date);
             // [0] month, [1] day, [2] hour, [3] minutes
